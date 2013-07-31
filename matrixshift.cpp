@@ -8,17 +8,15 @@ using namespace std;
 void move_dynamic_matrix(int[][5], int[][5]);
 void transfer_matrix(int[][5], int[][5]);
 
-int moves = 0;
-//number of columns and rows in matrix
+//n is the number of columns and rows in matrix
 int n = 5;
 int base = 0;
 int top = 0;
-int count = 0;
 
 int main(){
 int array[][5] = {{0,1,2,3,4}, {5,6,7,8,9}, {10,11,12,13,14}, {15,16,17,18,19}, {20,21,22,23,24}};
 int new_array[][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
-
+int moves = 0;
 top = n-1;
 cout << "How many moves to shift array(a negative shifts to the left\n";
 cout << "a positive shifts to the right)\n";
@@ -31,20 +29,24 @@ for(int k = 0; k < n; ++k)
 {cout << array[k][m];
 if(m == (n-1))
         cout << "\n";
+else if(array[k][m] < 10)
+        cout << " |";
 else
         cout << "|";
 }//end for loop m
 }//end for loop k
 
+//set how many to move if negative or positive
 int n_squared = (n-1)*(n-1);
 if(moves < 0)
 {moves = n_squared + moves;}
 else
 {moves = moves%n_squared;}
 
-cout << "moves " << moves << endl;
+//stop when top == bottom for odd and even sized matrices
 while(top != n/2)
 {
+//rotate one position to the right
 for(int i = 0; i < moves; ++i){
 move_dynamic_matrix(new_array, array);
 if(moves > 0)
@@ -52,12 +54,12 @@ if(moves > 0)
 transfer_matrix(new_array, array);
 }
 
-cout << "top: " << top << " base: " << base << endl;
 }
 top--;
 base++;
 }
 int half = n/2;
+//if odd number matrix set middle number
 if(n%2 != 0)
 {new_array[half][half] = array[half][half];}
 
@@ -69,8 +71,10 @@ for(int k = 0; k < n; ++k)
 {cout << new_array[k][m];
 if(m == (n-1))
         cout << "\n";
+else if(new_array[k][m] < 10)
+        cout << " |";
 else
-        cout << "|";
+	cout << "|";
 }//end for loop m
 }//end for loop k
 
