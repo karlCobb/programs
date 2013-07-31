@@ -18,10 +18,6 @@ int array[][5] = {{0,1,2,3,4}, {5,6,7,8,9}, {10,11,12,13,14}, {15,16,17,18,19}, 
 int new_array[][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
 int moves = 0;
 top = n-1;
-cout << "How many moves to shift array(a negative shifts to the left\n";
-cout << "a positive shifts to the right)\n";
-cout << ">>";
-cin >> moves;
 
 cout << "Original Matrix: " << endl;
 for(int k = 0; k < n; ++k)
@@ -35,6 +31,13 @@ else
         cout << "|";
 }//end for loop m
 }//end for loop k
+
+
+cout << "How many moves do you want to shift the matrix above ";
+cout << "(a negative shifts it to the right a positive shifts it to the left)\n";
+cout << ">>";
+cin >> moves;
+
 
 //set how many to move if negative or positive
 int n_perimeter = (n-1)*4;
