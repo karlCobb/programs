@@ -37,14 +37,14 @@ else
 }//end for loop k
 
 //set how many to move if negative or positive
-int n_squared = (n-1)*(n-1);
+int n_perimeter = (n-1)*4;
 if(moves < 0)
-{moves = n_squared + moves;}
+{moves = n_perimeter + moves;}
 else
-{moves = moves%n_squared;}
+{moves = moves%n_perimeter;}
 
 //stop when top == bottom for odd and even sized matrices
-while(top != n/2)
+while(top > base)
 {
 //rotate one position to the right
 for(int i = 0; i < moves; ++i){
