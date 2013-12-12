@@ -9,7 +9,30 @@ void collatz(int, vector<int>&);
 
 int main(){
 vector<int> maxArray;
-collatz(16, maxArray);
+vector<int> newArray;
+int max_size = 0;
+
+//send each number to collatz
+for(int n = 1; n <= 100000; ++n){
+collatz(n, maxArray);
+
+//if larger than max_size store in newArray
+if(max_size < maxArray.size()){
+max_size = maxArray.size();
+newArray.clear();
+for(vector<int>::const_iterator i = maxArray.begin(); i != maxArray.end(); i++){
+newArray.push_back(*i);
+}
+maxArray.clear();
+}
+else{
+maxArray.clear();
+}
+}//end for
+cout << max_size << endl;
+for(vector<int>::const_iterator i = newArray.begin(); i != newArray.end(); i++){
+cout << *i << " ";
+}
 }
 
 
@@ -19,20 +42,18 @@ return true;
 else
 return false;
 }
-//two arrays check length at end and if bigger make first array bigger
-//
+
+
 
 
 void collatz(int n, vector<int>& maxArray){
+maxArray.push_back(n);
 if(n == 1){
-maxArray.push_back(n);
-for(vector<int>::const_iterator i = maxArray.begin(); i != maxArray.end(); i++)
-cout << *i << "->";
+return;
 }else if(isOdd(n)){
-maxArray.push_back(n);
 collatz(3*n+1, maxArray);
 }else{
-maxArray.push_back(n);
 collatz(n/2, maxArray);
 }
 }
+
