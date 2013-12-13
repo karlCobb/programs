@@ -2,18 +2,20 @@
 #include <cstdlib>
 #include <vector>
 using namespace std;
+typedef uint64_t num;
 
-bool isOdd(int);
-bool isEven(int);
-void collatz(int, vector<int>&);
+
+bool isOdd(num);
+bool isEven(num);
+void collatz(num, vector<int>&);
 
 int main(){
 vector<int> maxArray;
 vector<int> newArray;
-int max_size = 0;
+num max_size = 0;
 
 //send each number to collatz
-for(int n = 1; n <= 100000; ++n){
+for(num n = 1; n <= 100000; ++n){
 collatz(n, maxArray);
 
 //if larger than max_size store in newArray
@@ -36,7 +38,7 @@ cout << *i << " ";
 }
 
 
-bool isOdd(int n){
+bool isOdd(num n){
 if(n%2 != 0)
 return true;
 else
@@ -46,7 +48,7 @@ return false;
 
 
 
-void collatz(int n, vector<int>& maxArray){
+void collatz(num n, vector<int>& maxArray){
 maxArray.push_back(n);
 if(n == 1){
 return;

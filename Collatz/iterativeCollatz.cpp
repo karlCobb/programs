@@ -3,7 +3,7 @@
 #include <vector>
 #include <ctime>
 using namespace std;
-int ITERATIONS=1000000;
+unsigned int ITERATIONS=1000000;
 typedef uint64_t num;
 
 
@@ -14,9 +14,9 @@ time_t end;
 start = time(NULL);
 vector<int> maxArray;
 vector<int> newArray;
-num max_size = 0;
-num n = 2;
-num collatz = n;
+int max_size = 0;
+int n = 2;
+unsigned int collatz = n;
 while(n <= ITERATIONS){
 
 try{
@@ -25,6 +25,7 @@ newArray.push_back(collatz);
 cerr << e.what() << endl;
 cerr << "size: " << newArray.size() << "\n";
 cerr << "capacity: " << newArray.capacity() << "\n";
+cerr << "collatz: " << collatz << endl;
 }
 
 if(collatz == 1){

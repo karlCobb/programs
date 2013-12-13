@@ -1,12 +1,16 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <ctime>
 using namespace std;
 typedef uint64_t num;
 int ITERATIONS=1000000;
 
 int main()
 {
+time_t start;
+time_t end;
+start = time(NULL);
 num counter = 0;
 num max_size = 0;
 num max_collatz = 0;
@@ -21,8 +25,6 @@ max_size = counter;
 }
 counter = 0;
 collatz = ++n;
-cout << "max_size: " << max_size << endl;
-cout << "max_collatz: " << max_collatz << endl;
 }
 else if(collatz%2 == 0){
 try{
@@ -40,8 +42,9 @@ cerr << e.what() << "\n";
 }
 ++counter;
 }
+end = time(NULL);
 cout << "max_size: " << max_size << endl;
 cout << "max_collatz: " << max_collatz << endl;
-
+cout << difftime(end, start)*1000 << "ms\n";
 }
 
