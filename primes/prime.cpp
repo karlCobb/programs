@@ -10,7 +10,7 @@ int main(){
 bigNum starting_number;
 //600851475143;
 cin >> starting_number;
-bool prime = isPrime(floor(starting_number));
+bool prime = isPrime(starting_number);
 if(prime){
 cout << "The number is prime cannot be factored further." << endl;
 return 0;
