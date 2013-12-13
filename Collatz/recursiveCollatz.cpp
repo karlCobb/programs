@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <ctime>
 using namespace std;
 typedef uint64_t num;
 
@@ -10,12 +11,15 @@ bool isEven(num);
 void collatz(num, vector<int>&);
 
 int main(){
+time_t start;
+time_t end;
+start = time(NULL);
 vector<int> maxArray;
 vector<int> newArray;
 num max_size = 0;
 
 //send each number to collatz
-for(num n = 1; n <= 100000; ++n){
+for(num n = 1; n <= 1000000; ++n){
 collatz(n, maxArray);
 
 //if larger than max_size store in newArray
@@ -35,6 +39,8 @@ cout << max_size << endl;
 for(vector<int>::const_iterator i = newArray.begin(); i != newArray.end(); i++){
 cout << *i << " ";
 }
+end = time(NULL);
+cout << difftime(end, start)*1000 << "ms" << endl;
 }
 
 
