@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "Prime.h"
 using namespace std;
 typedef uint64_t bigNum;
 
-bool isPrime(bigNum);
 
 int main(){
 bigNum starting_number = 600851475143;
@@ -30,7 +30,7 @@ test_number = test_number/i;
 }//end else
 
 }
-
+/*
 bool isPrime( bigNum number){
 
 
@@ -43,3 +43,4 @@ bool isPrime( bigNum number){
     return true;
 
 }
+*/
