@@ -32,14 +32,18 @@ divisors.push_back(number);
 int findDivisors(uint64_t number){
 uint64_t square_root = sqrt(number);
 int count = 0;
-for(uint64_t i = 1; i <= square_root; ++i){
+if(number == 1){
+return 1;
+}
+for(int i = 1; i <= square_root; ++i){
 if(number%i == 0){
 count += 2;
 }
+}
 if(square_root*square_root == number){
---count;
+count--;
 }
-}
+
 return count;
 }
 
