@@ -51,7 +51,7 @@ vector<Queen>::iterator it = orderByRow(queens, ordered);
 Queen q2;
 for(int i = 0; i < N; ++i){
 q2 = *(it+i);
-cout << q2 << endl;
+cout << createRow(q2.getColumn(), N) << endl;
 }
 
 }

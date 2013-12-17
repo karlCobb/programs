@@ -11,11 +11,11 @@ string row;
 int before = pos-1;
 int after = N-pos;
 for(int i = 0; i < before; ++i){
-row += "O";
+row += "O ";
 }
-row += "X";
+row += "X ";
 for(int i = 0; i < after; ++i){
-row += "O";
+row += "O ";
 }
 return row;
 }

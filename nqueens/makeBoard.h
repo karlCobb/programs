@@ -4,6 +4,6 @@
 #include <string>
 
 vector<Queen>::iterator orderByRow(vector<Queen>&, vector<Queen>&);
-string createRow(int);
+string createRow(int, int);
 
 #endif
