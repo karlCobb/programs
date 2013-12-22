@@ -12,6 +12,8 @@ class LinkedList{
 public:
 
 LinkedList& operator=(const LinkedList&);
+LinkedList& operator+=(const int n);
+LinkedList& operator-=(const int n);
 
 LinkedList(){head = new Node; cout << "created";}
 ~LinkedList(){deleteNodes(); cout << "destroyed" << endl;}
@@ -33,6 +35,7 @@ void traverse();
 void deleteNode(int);
 Node* getHead();
 int getCount();
+bool find(int);
 
 private:
 void deleteNodes();

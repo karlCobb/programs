@@ -18,7 +18,16 @@ add(p->value);
 return *this;
 }
 
+LinkedList& LinkedList::operator+=(const int n){
+add(n);
+return *this;
+}
 
+LinkedList& LinkedList::operator-=(const int n){
+deleteNode(n);
+return *this;
+
+}
 
 Node* LinkedList::getHead(){
 return head;
@@ -115,4 +124,20 @@ delete p;
 }
 
 }
+}
+
+bool LinkedList::find(int n){
+if(head != NULL){
+Node* p = head;
+while(p->next != NULL){
+if(p->next->value == n){
+return true;
+}
+
+p = p->next;
+}
+}
+return false;
+
+
 }
