@@ -3,21 +3,37 @@
 #include <cstdio>
 #include <cstddef>
 #include "linkedList.h"
+#include <algorithm>
 
 using namespace std;
 
 
 LinkedList& LinkedList::operator=(const LinkedList& ll){
-	Node* p;
-//        p = ll.head;
-        LinkedList* new_list = new LinkedList;
-        if(p->next != NULL){
-          while(p->next != NULL){
-	    int v = p->value;
-            new_list->add(v); 
-          }
-        }
-	return *new_list;
+//delete head;
+Node* p = ll.head;
+while(p->next != NULL){
+p=p->next;
+add(p->value);
+}
+return *this;
+}
+
+
+
+Node* LinkedList::getHead(){
+return head;
+}
+
+int LinkedList::getCount(){
+int count = 0;
+if(head != NULL){
+Node* p = head;
+while(p->next){
+p = p->next;
+++count;
+}
+}
+return count;
 }
 
 void LinkedList::add(int n){
@@ -51,42 +67,52 @@ cout << p->value << endl;
 
 void LinkedList::deleteNodes(){
 if(head != NULL){
+delete head;
+}
+/*
 Node* p = head;
 Node* temp;
-while(p->next){
-temp = p;
-p = p->next;
+
+while(p->next != NULL){
+temp = p->next;
+p->value = temp->value;
+p->next = temp->next;
+cout << "temp : " << temp->value << endl;
 delete temp;
 }
-head->next = NULL;
+if(head != NULL){
+delete head;
 }
-
-
+}
+*/
 }
 
 void LinkedList::deleteNode(int n){
-if(head != NULL)
-{
-Node* p = head;
-Node* last = p;
-while(p->next != NULL || p->value == n){
+if(head != NULL){
+Node* p = head->next;
+Node* temp;
+Node* last = head;
+while(p->next != NULL){
 if(p->value == n){
-last->next = p->next;
-delete p;
-
-if(last->next != NULL){
-p = last->next;
-}
+last = p;
+temp = p->next;
+p->value = temp->value;
+p->next = temp->next;
+temp->next = NULL;
+delete temp;
 }
 else{
 last = p;
 p = p->next;
 }
-}//end while
+}
+p->next = NULL;
+if(p->value == n)
+{
+last->next = NULL;
+p->next = NULL;
+delete p;
+}
 
-}//end if
-else{
-cout << "The list is empty" << endl;
 }
 }
-

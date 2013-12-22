@@ -16,20 +16,23 @@ LinkedList& operator=(const LinkedList&);
 LinkedList(){head = new Node; cout << "created";}
 ~LinkedList(){deleteNodes(); cout << "destroyed" << endl;}
 LinkedList(const LinkedList& linkedlist){
-	Node* p;
-	p = head->next;
-	LinkedList* new_list = new LinkedList;
-	if(head->next != NULL){
-	  while(p->next != NULL){
-	    new_list->add(p->value); 
-	  }
-  	}
+cout << "hello" << endl;
+//delete head;
+head = new Node();
+
+Node* p = linkedlist.head;
+while(p->next != NULL){
+add(p->value);
+p = p->next;
+}
+
 }
 
 void add(int);
 void traverse();
 void deleteNode(int);
-
+Node* getHead();
+int getCount();
 
 private:
 void deleteNodes();

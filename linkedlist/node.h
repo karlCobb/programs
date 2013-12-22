@@ -7,10 +7,11 @@ using namespace std;
 class Node{
 public:
 int value;
+int count;
 Node* next;
 Node(){next=NULL; value=0;}
 Node(int v){next=NULL;value=v;}
-~Node(){}
+~Node(){delete next; cout << "delete" << endl;}
 };
 
 
